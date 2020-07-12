@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object练习</title>
+</head>
+<body>
+    <script>
+        //Object.assign(obj1,obj2,obj3,......)可用于对象的拼接obj1改变，其他对象不变。
+        var obj1={name:'张三'};
+        var obj2={age:18};
+        var obj3={say:function(){
+            console.log('说话');
+        }}
+        console.log(Object.assign(obj1,obj2,obj3));
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj3);
+
+
+        //对象拷贝
+        var obj = {name: '张三', age: 20};
+        var newobj={sex:"man"}
+        var newObj = Object.assign({},obj);
+        console.log(newobj)        //有错误，没有实现拷贝
+
+
+        //Object.is(a,b);用于判断两个值是否相同,与===类似，但又不完全一样
+        console.log(Object.is(1,1));    //true
+        console.log(Object.is("1",1));   //false
+
+        //obj.prototype.isPrototypeOf(b);确定一个对象是否存在于另一个对象的原型链中
+        function a(){
+        }
+        var b = new a();
+        console.log(a.prototype.isPrototypeOf(b));
+
+        //Object.defineProperty()
+        var obj = new Object();
+        Object.defineProperty(obj, 'name', {
+            configurable: false,
+            writable: true,
+            enumerable: true,           
+            value: '张三'
+        })
+        console.log(obj.name) 
+
+        //Object.defineProperties()直接在一个对象上定义一个或多个新的属性或修改现有属性，并返回该对象。
+        var obj = new Object();
+        Object.defineProperties(obj, {
+            name: {
+                value: '张三',
+                configurable: false,
+                writable: true,
+                enumerable: true
+            },
+            age: {
+                value: 18,
+                configurable: true
+            }
+        })
+        console.log(obj.name, obj.age) 
+    </script>
+</body>
+</html>
